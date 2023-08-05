@@ -1,3 +1,5 @@
-import { COLORS, SIZES, SHADOWS } from "./theme";
+import images from "./image";
+import icons from "./icon";
+import { COLORS, FONT, SIZES, SHADOWS } from "./theme";
 
-export { COLORS, SIZES, SHADOWS };
+export default { images, icons, COLORS, FONT, SIZES, SHADOWS };
