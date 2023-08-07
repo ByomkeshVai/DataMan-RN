@@ -7,16 +7,12 @@ import Greeting from "../components/home/Greeting.jsx";
 import Carousel from "../components/home/Carousel.jsx";
 import Category from "../components/home/Category.jsx";
 import CategoryList from "../components/home/Categories/CategoryList.jsx";
+import Header from "../components/Header/Header.jsx";
 
 export default function Home() {
   return (
     <SafeAreaView>
-      <View style={styles.appBarWrapper}>
-        <View style={styles.appBar}>
-          <MaterialCommunityIcons name="face-man-profile" size={28} />
-          <Text style={styles.userName}>Habib Rahman</Text>
-        </View>
-      </View>
+      <Header />
       <ScrollView>
         <Greeting />
 
