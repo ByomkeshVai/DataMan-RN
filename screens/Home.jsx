@@ -8,6 +8,7 @@ import Carousel from "../components/home/Carousel.jsx";
 import Category from "../components/home/Category.jsx";
 import CategoryList from "../components/home/Categories/CategoryList.jsx";
 import Header from "../components/Header/Header.jsx";
+import MarginArea from "../components/Shared/MarginArea.jsx";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <Category />
         <CategoryList />
         <Carousel />
+        <MarginArea />
       </ScrollView>
     </SafeAreaView>
   );

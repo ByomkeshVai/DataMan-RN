@@ -31,10 +31,21 @@ const ServiceArea = ({ item }) => {
             </View>
           </View>
         </View>
-        <View style={styles.phoneCall}>
-          <TouchableOpacity>
-            <Feather name="phone-call" size={24} color="black" />
+        <View style={styles.infoSide}>
+          <TouchableOpacity style={styles.rating}>
+            <Text>Rating: </Text>
+            <Feather name="star" size={16} color="black" />
+            <Feather name="star" size={16} color="black" />
+            <Feather name="star" size={16} color="black" />
+            <Feather name="star" size={16} color="black" />
+            <Feather name="star" size={16} color="black" />
           </TouchableOpacity>
+          <View>
+            <TouchableOpacity style={styles.contactInfo}>
+              <Feather name="phone-call" size={20} color="black" />
+              <Text>Contact Info</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </SafeAreaView>

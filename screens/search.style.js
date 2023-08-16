@@ -38,6 +38,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: COLORS.secondary,
   },
+  suggestionsContainer: {
+    fontFamily: "regular",
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: SIZES.small,
+  },
+  suggestionItem: {
+    suggestionsContainer: {
+      fontFamily: "regular",
+      width: "100%",
+      height: "100%",
+      paddingHorizontal: SIZES.small,
+    },
+  },
 });
 
 export default styles;

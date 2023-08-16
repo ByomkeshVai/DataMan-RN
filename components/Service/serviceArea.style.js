@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     gap: 13,
   },
   phoneCall: {
-    padding: 20,
+    textAlign: "right",
   },
   welcomeTxt: {
     fontFamily: "bold",
@@ -56,6 +56,26 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
     marginTop: SIZES.small,
     marginBottom: 15,
+  },
+  rating: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 2,
+  },
+  infoSide: {
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  contactInfo: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 7,
+    borderColor: "black", // Border color
+    borderRadius: 10, // Border radius
+    borderStyle: "solid",
+    padding: 10,
+    marginTop: 16,
+    backgroundColor: "#54C57D",
   },
 });
 
