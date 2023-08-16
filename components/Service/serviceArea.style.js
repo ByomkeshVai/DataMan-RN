@@ -24,12 +24,15 @@ const styles = StyleSheet.create({
   welcomeTxt: {
     fontFamily: "bold",
     fontSize: SIZES.medium,
-    lineHeight: 30,
+    lineHeight: 20,
+    width: 130,
   },
   locationStyle: {
     marginTop: 10,
     flexDirection: "row",
     gap: 2,
+    lineHeight: 20,
+    width: 130,
   },
   locationLogo: {
     marginTop: 1,

@@ -63,11 +63,15 @@ function Search() {
           </TouchableOpacity>
         </View>
         <View style={styles.suggestionsContainer}>
-          <FlatList
-            data={filteredItems}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({ item }) => <ServiceArea item={item}></ServiceArea>}
-          />
+          {filteredItems.length === 0 ? (
+            <Text>No User found</Text>
+          ) : (
+            <FlatList
+              data={filteredItems}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={({ item }) => <ServiceArea item={item}></ServiceArea>}
+            />
+          )}
         </View>
       </View>
     </SafeAreaView>
