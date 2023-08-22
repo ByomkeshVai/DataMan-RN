@@ -1,13 +1,8 @@
+import React from "react";
 import { useFonts } from "@expo-google-fonts/inter";
-import { SplashScreen } from "expo-router";
 import { useCallback } from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigation from "./navigation/BottomTabNavigation";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import ServiceView from "./screens/ServiceView";
 
-const Stack = createBottomTabNavigator();
+import Providers from "./navigation";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,21 +21,5 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Bottom Navigation"
-          component={BottomTabNavigation}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ServiceView"
-          component={ServiceView}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  return <Providers />;
 }

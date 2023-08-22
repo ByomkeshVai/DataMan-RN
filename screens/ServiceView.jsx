@@ -13,7 +13,7 @@ const ServiceView = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const apiUrl = "http://192.168.0.101:5000/all/items/";
+    const apiUrl = "http://192.168.0.103:5000/all/items/";
     const category = item.name;
 
     // Fetch data using the fetch API

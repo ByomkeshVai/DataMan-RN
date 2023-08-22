@@ -1,9 +1,11 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./profile.style";
+import { AuthContext } from "../components/providers/AuthProvider";
 
 export default function Profile() {
+  const { logOut } = useContext(AuthContext);
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -32,7 +34,7 @@ export default function Profile() {
           <TouchableOpacity style={styles.menu}>
             <Text style={styles.menuText}>Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menu}>
+          <TouchableOpacity style={styles.menu} onPress={() => logOut()}>
             <Text style={styles.menuText}>Logout</Text>
           </TouchableOpacity>
         </View>
