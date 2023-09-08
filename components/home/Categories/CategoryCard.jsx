@@ -13,8 +13,8 @@ function CategoryCard({ item }) {
         >
           <View style={styles.container}>
             <View style={styles.imageContainer}>
-              <Image source={{ uri: item.photo }} style={styles.image} />
-              <Text>{item.name}</Text>
+              <Image source={{ uri: item.image }} style={styles.image} />
+              <Text>{item.category}</Text>
             </View>
           </View>
         </TouchableOpacity>

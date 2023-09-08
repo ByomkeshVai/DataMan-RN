@@ -6,56 +6,28 @@ import {
   StyleSheet,
   SafeAreaView,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SIZES } from "../../../constants/theme";
 import CategoryCard from "./CategoryCard";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import axios from "axios";
 
 function CategoryList() {
-  const category = [
-    {
-      id: "1",
-      name: "Plumber",
-      photo:
-        "https://uxwing.com/wp-content/themes/uxwing/download/business-professional-services/services-plumber-icon.png",
-    },
-    {
-      id: "2",
-      name: "Electrician",
-      photo: "https://cdn-icons-png.flaticon.com/512/1983/1983275.png",
-    },
-    {
-      id: "3",
-      name: "Driver",
-      photo: "https://cdn-icons-png.flaticon.com/512/1581/1581908.png",
-    },
-    {
-      id: "4",
-      name: "Engineer",
-      photo: "https://cdn-icons-png.flaticon.com/512/3700/3700845.png",
-    },
-    {
-      id: "5",
-      name: "Doctor",
-      photo: "https://cdn-icons-png.flaticon.com/512/3774/3774299.png",
-    },
-    {
-      id: "6",
-      name: "Cleaner",
-      photo: "https://cdn-icons-png.flaticon.com/512/1500/1500114.png",
-    },
-    {
-      id: "7",
-      name: "Mechanic",
-      photo: "https://cdn-icons-png.flaticon.com/512/4284/4284214.png",
-    },
-    {
-      id: "8",
-      name: "Shopkeeper",
-      photo: "https://cdn-icons-png.flaticon.com/512/7195/7195537.png",
-    },
-    // ... Add the rest of your items here
-  ];
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = async () => {
+    try {
+      const response = await axios.get(
+        `http://192.168.0.100:5000/all/category`
+      );
+      setCategory(response.data || []);
+    } catch (error) {
+      console.error("Error fetching items:", error);
+    }
+  };
 
   return (
     <SafeAreaView>

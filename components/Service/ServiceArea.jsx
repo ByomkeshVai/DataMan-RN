@@ -10,6 +10,7 @@ import Header from "../Header/Header";
 import styles from "./serviceArea.style";
 import { Feather } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import Subscription from "../subscription/Subscription";
 
 const ServiceArea = ({ item }) => {
   return (

@@ -6,6 +6,7 @@ import ServiceArea from "../components/Service/ServiceArea";
 import Header from "./../components/Header/Header";
 import styles from "./ServiceView.style";
 import ServiceHeader from "../components/Service/ServiceHeader";
+import Subscription from "../components/subscription/Subscription";
 
 const ServiceView = () => {
   const route = useRoute();
@@ -13,8 +14,9 @@ const ServiceView = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const apiUrl = "http://192.168.0.103:5000/all/items/";
-    const category = item.name;
+    const apiUrl = "http://192.168.0.100:5000/all/items/";
+    const category = item.category;
+
 
     // Fetch data using the fetch API
     fetch(apiUrl + category)
@@ -30,7 +32,7 @@ const ServiceView = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [item.name]);
+  }, [item.category]);
 
   return (
     <SafeAreaView>
@@ -42,6 +44,9 @@ const ServiceView = () => {
             <ServiceArea key={index} item={item} />
           ))}
         </View>
+      </View>
+      <View style={styles.bottomComponent}>
+        <Subscription item={item} />
       </View>
     </SafeAreaView>
   );

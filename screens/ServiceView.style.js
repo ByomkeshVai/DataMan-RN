@@ -23,9 +23,6 @@ const styles = StyleSheet.create({
     fontSize: SIZES.medium,
     color: COLORS.gray,
   },
-  contentContainer: {
-    flexGrow: 1,
-  },
 });
 
 export default styles;
