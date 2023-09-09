@@ -18,7 +18,7 @@ const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
     };
 
     // Replace this with your API endpoint for purchase
-    const purchaseApiUrl = `http://192.168.0.100:5000/user/purchase/${userEmail}`; // Replace with your purchase API URL
+    const purchaseApiUrl = `http://192.168.0.100:5000/user/purchase/${userEmail}`;
 
     axios
       .post(purchaseApiUrl, userSelectedData)
