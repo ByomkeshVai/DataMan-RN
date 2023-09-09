@@ -41,8 +41,6 @@ const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
         <View>
           <Text>Price: {item.price} ৳</Text>
         </View>
-      </View>
-      <View>
         <View style={styles.incrContainer}>
           <TouchableOpacity onPress={decrementPrice}>
             <Text style={styles.incrText}>-</Text>
@@ -51,8 +49,14 @@ const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
             <Text style={styles.incrText}>+</Text>
           </TouchableOpacity>
         </View>
+      </View>
+
+      <View style={styles.allPurchase}>
         <TouchableOpacity onPress={handlePurchase}>
           <Text style={styles.purchaseInfo}>Purchase</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.purchaseInfo}>All Package</Text>
         </TouchableOpacity>
       </View>
     </View>

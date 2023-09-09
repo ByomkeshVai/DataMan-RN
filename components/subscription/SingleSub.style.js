@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     fontFamily: "bold",
-    fontSize: SIZES.large,
+    fontSize: SIZES.medium,
     alignItems: "center",
     borderWidth: 0, // Border width
     borderColor: "black", // Border color
-    backgroundColor: "red",
+    backgroundColor: "#254547",
     borderRadius: 90, // Border radius for rounded corners
     // Padding (optional)
     paddingHorizontal: 10,
@@ -90,7 +90,19 @@ const styles = StyleSheet.create({
   incrContainer: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
+    marginTop: 10,
+  },
+  detection: {
+    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
+  },
+  allPurchase: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: 10,
   },
 });
 

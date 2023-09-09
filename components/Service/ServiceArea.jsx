@@ -40,6 +40,12 @@ const ServiceArea = ({ item }) => {
     setModalVisible(!isModalVisible);
   };
 
+  const [isModalVisible2, setModalVisible2] = useState(false);
+
+  const toggleModal2 = () => {
+    setModalVisible2(!isModalVisible2);
+  };
+
   const handleCheckSubscription = (userID) => {
     axios
       .get(`http://192.168.0.100:5000/check-subscription`, {
@@ -51,14 +57,17 @@ const ServiceArea = ({ item }) => {
           setError("");
           toggleModal();
         } else {
-          setPhone1("");
-          setError("Buy subscription");
+          // Set the error state with the error message from the response
+          setError(response.data.error);
+          toggleModal2();
         }
       })
       .catch((error) => {
         console.error("Error:", error);
         setPhone1("");
+        // Set the error state with a generic error message
         setError("Error occurred");
+        toggleModal2();
       });
   };
 
@@ -82,6 +91,7 @@ const ServiceArea = ({ item }) => {
       console.error("An error occurred while requesting permission:", err);
     }
   };
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -121,9 +131,8 @@ const ServiceArea = ({ item }) => {
           </View>
         </View>
       </View>
+
       <Modal
-        // deviceWidth={deviceWidth}
-        // deviceHeight={deviceHeight}
         isVisible={isModalVisible}
         onSwipeComplete={() => setModalVisible(false)}
         swipeDirection="left"
@@ -131,7 +140,22 @@ const ServiceArea = ({ item }) => {
         <View style={styles.container}>
           <Text>{phone1}</Text>
           <Button title="Call" onPress={openDialPad} />
-          <Button title="Hide modal" onPress={toggleModal} />
+          <Button title="X" onPress={toggleModal} />
+        </View>
+      </Modal>
+
+      <Modal
+        isVisible={isModalVisible2} // Use isVisible for the error modal
+        onSwipeComplete={() => setModalVisible2(false)} // Use setModalVisible2
+        swipeDirection="left"
+      >
+        <View style={styles.container}>
+          <Text>
+            {error > 0
+              ? `Please Buy Subcription For ${item.category}`
+              : `Please Buy Subcription For ${item.category}`}
+          </Text>
+          <Button title="X" onPress={toggleModal2} />
         </View>
       </Modal>
     </SafeAreaView>
