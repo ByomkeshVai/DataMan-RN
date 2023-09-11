@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-import { TouchableOpacity } from "react-native";
 import { View, Text } from "react-native";
-import axios from "axios"; // Import Axios for making HTTP requests
-import styles from "./SingleSub.style";
-import { AuthContext } from "../providers/AuthProvider";
+import Subscription from "../subscription/Subscription";
+import AllPackageSub from "./AllPackageSub";
+import SingleSub from "../subscription/SingleSub";
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from "../providers/AuthProvider";
+import styles from "./../subscription/SingleSub.style";
+import { TouchableOpacity } from "react-native";
 
-const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
+const SinglePackage = ({ item, incrementPrice, decrementPrice }) => {
   const { user } = useContext(AuthContext);
   const userEmail = user.email;
 
@@ -36,7 +38,7 @@ const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.miniContainer}>
       <View>
         <View style={styles.durationContainer}>
           <Text>Duration: {item.duration} Days</Text>
@@ -66,4 +68,4 @@ const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
   );
 };
 
-export default SingleSub;
+export default SinglePackage;

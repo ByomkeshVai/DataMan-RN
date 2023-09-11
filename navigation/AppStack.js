@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import ServiceView from "./../screens/ServiceView";
 import BottomTabNavigation from "./BottomTabNavigation";
+import AllPackage from "../screens/AllPackage";
 
 const Stack = createBottomTabNavigator();
 
@@ -19,6 +20,11 @@ const AppStack = () => {
       <Stack.Screen
         name="ServiceView"
         component={ServiceView}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AllPackage"
+        component={AllPackage}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

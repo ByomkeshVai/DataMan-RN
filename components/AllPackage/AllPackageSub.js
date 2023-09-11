@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
-import Header from "../Header/Header";
-import styles from "./Subscription.style";
+import { View, Text } from "react-native";
+import styles from "./AllPackageSub.style";
 import axios from "axios";
-import SingleSub from "./SingleSub";
+import { FlatList } from "react-native";
+import SinglePackage from "./SinglePackage";
+import { SIZES } from "../../constants/theme";
+import SingleSub from "../subscription/SingleSub";
 
-const Subscription = ({ item }) => {
+const AllPackageSub = ({ item }) => {
   const [service, setService] = useState([]);
   const category = item.category;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,21 +42,20 @@ const Subscription = ({ item }) => {
   };
 
   return (
-    <View style={styles.subscriptionContainer}>
+    <View>
       {service.length > 0 ? (
-        <>
-          <SingleSub
+        <View style={styles.container}>
+          <SinglePackage
             item={service[currentIndex]}
             incrementPrice={incrementPrice}
             decrementPrice={decrementPrice}
           />
-          <View></View>
-        </>
+        </View>
       ) : (
-        <Text>No packages available for this category.</Text>
+        <Text></Text>
       )}
     </View>
   );
 };
 
-export default Subscription;
+export default AllPackageSub;

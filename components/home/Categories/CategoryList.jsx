@@ -21,7 +21,7 @@ function CategoryList() {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.100:5000/all/category`
+        `http://192.168.0.104:5000/all/category`
       );
       setCategory(response.data || []);
     } catch (error) {

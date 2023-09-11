@@ -2,19 +2,7 @@ import { StyleSheet } from "react-native";
 import { COLORS, SIZES } from "../../constants/theme";
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    borderRadius: SIZES.medium,
-    marginTop: 10,
-    backgroundColor: "#C1ECE4",
-    padding: 20,
-    borderRadius: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 13,
-    justifyContent: "space-between",
-    marginHorizontal: 12,
-  },
+  container: {},
   durationContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -105,19 +93,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     gap: 10,
-  },
-  miniContainer: {
-    flex: 1,
-    borderRadius: SIZES.medium,
-    marginTop: 10,
-    backgroundColor: "#C1ECE4",
-    padding: 20,
-    borderRadius: 15,
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 13,
-    justifyContent: "space-between",
-    marginHorizontal: 12,
   },
 });
 
