@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import Subscription from "../subscription/Subscription";
 import AllPackageSub from "./AllPackageSub";
 import SingleSub from "../subscription/SingleSub";
@@ -7,8 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../providers/AuthProvider";
 import styles from "./../subscription/SingleSub.style";
 import { TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native";
 
-const SinglePackage = ({ item, incrementPrice, decrementPrice }) => {
+const SinglePackage = ({ item, incrementPrice, decrementPrice, onRemove }) => {
   const { user } = useContext(AuthContext);
   const userEmail = user.email;
 
@@ -35,36 +36,45 @@ const SinglePackage = ({ item, incrementPrice, decrementPrice }) => {
       });
   };
 
-  const navigation = useNavigation();
-
+  const handleRemove = () => {
+    // Call the onRemove callback with the current item to be removed
+    onRemove(item);
+  };
   return (
-    <View style={styles.miniContainer}>
-      <View>
-        <View style={styles.durationContainer}>
-          <Text>Duration: {item.duration} Days</Text>
-        </View>
+    <SafeAreaView>
+      <View style={styles.miniContainer}>
         <View>
-          <Text>Price: {item.price} ৳</Text>
+          <Text>Category: {item.category}</Text>
+          <View style={styles.durationContainer}>
+            <Text>Duration: {item.duration} Days</Text>
+          </View>
+          <View>
+            <Text>Price: {item.price} ৳</Text>
+          </View>
+          <View style={styles.incrContainer}>
+            <TouchableOpacity onPress={decrementPrice}>
+              <Text style={styles.incrText}>-</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={incrementPrice}>
+              <Text style={styles.incrText}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.incrContainer}>
-          <TouchableOpacity onPress={decrementPrice}>
-            <Text style={styles.incrText}>-</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={incrementPrice}>
-            <Text style={styles.incrText}>+</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
 
-      <View style={styles.allPurchase}>
-        <TouchableOpacity onPress={handlePurchase}>
-          <Text style={styles.purchaseInfo}>Purchase</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("AllPackage")}>
-          <Text style={styles.purchaseInfo}>All Package</Text>
-        </TouchableOpacity>
+        <View style={styles.allPurchase}>
+          <View>
+            <TouchableOpacity onPress={handlePurchase}>
+              <Text style={styles.purchaseInfo}>Purchase</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.removeButton}>
+          <TouchableOpacity onPress={handleRemove}>
+            <Text style={styles.removeButtonText}>Remove</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

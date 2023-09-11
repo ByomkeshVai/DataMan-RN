@@ -5,9 +5,13 @@ import { COLORS, SIZES } from "../constants/theme";
 import Subscription from "../components/subscription/Subscription";
 import axios from "axios";
 import AllPackageSub from "../components/AllPackage/AllPackageSub";
+import AddCategory from "./../components/AllPackage/AddCategory";
 
 const AllPackage = () => {
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   useEffect(() => {
     fetchItems();
   }, []);
@@ -17,10 +21,17 @@ const AllPackage = () => {
       const response = await axios.get(
         `http://192.168.0.104:5000/all/category`
       );
-      setCategory(response.data || []);
+      setCategories(response.data || []);
+      setSelectedCategory((response.data && response.data[0]) || null);
     } catch (error) {
       console.error("Error fetching items:", error);
     }
+  };
+
+  const handleAddCategory = (newCategory) => {
+    setSelectedCategories([...selectedCategories, newCategory]);
+    setCategories([newCategory, ...categories]);
+    setSelectedCategory(newCategory);
   };
 
   return (
@@ -31,12 +42,20 @@ const AllPackage = () => {
         </Text>
         <Text style={styles.welcomeTxt(COLORS.primary, 0)}>Package Here</Text>
       </View>
+      {/* AddCategory component for selecting a category */}
+      <AddCategory categories={categories} onAddCategory={handleAddCategory} />
       <View>
         <FlatList
           horizontal={false}
-          data={category}
-          renderItem={({ item }) => <AllPackageSub item={item} />}
+          data={categories} // Render the entire list of categories
+          renderItem={({ item }) => (
+            <AllPackageSub
+              item={item}
+              onSelectCategory={() => setSelectedCategory(item)} // Add this line to update selectedCategory
+            />
+          )}
         />
+        {selectedCategory && <AllPackageSub item={selectedCategory} />}
       </View>
     </SafeAreaView>
   );
