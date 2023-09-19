@@ -14,7 +14,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ServiceArea from "../components/Service/ServiceArea";
 
-const API_URL = "http://192.168.0.104:5000/all/items";
+const API_URL = "http://192.168.0.105:5000/all/items";
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -27,7 +27,7 @@ function Search() {
 
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`http://192.168.0.104:5000/all/items`);
+      const response = await axios.get(`http://192.168.0.105:5000/all/items`);
       setItems(response.data || []);
     } catch (error) {
       console.error("Error fetching items:", error);

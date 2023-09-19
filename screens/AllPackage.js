@@ -19,19 +19,16 @@ const AllPackage = () => {
   const fetchItems = async () => {
     try {
       const response = await axios.get(
-        `http://192.168.0.104:5000/all/category`
+        `http://192.168.0.105:5000/all/category`
       );
       setCategories(response.data || []);
-      setSelectedCategory((response.data && response.data[0]) || null);
     } catch (error) {
       console.error("Error fetching items:", error);
     }
   };
 
   const handleAddCategory = (newCategory) => {
-    setSelectedCategories([...selectedCategories, newCategory]);
-    setCategories([newCategory, ...categories]);
-    setSelectedCategory(newCategory);
+    setCategories((prevCategories) => [...prevCategories, newCategory]);
   };
 
   return (
@@ -43,19 +40,13 @@ const AllPackage = () => {
         <Text style={styles.welcomeTxt(COLORS.primary, 0)}>Package Here</Text>
       </View>
       {/* AddCategory component for selecting a category */}
-      <AddCategory categories={categories} onAddCategory={handleAddCategory} />
+      <AddCategory onAddCategory={handleAddCategory} />
       <View>
         <FlatList
           horizontal={false}
           data={categories} // Render the entire list of categories
-          renderItem={({ item }) => (
-            <AllPackageSub
-              item={item}
-              onSelectCategory={() => setSelectedCategory(item)} // Add this line to update selectedCategory
-            />
-          )}
+          renderItem={({ item }) => <AllPackageSub item={item} />}
         />
-        {selectedCategory && <AllPackageSub item={selectedCategory} />}
       </View>
     </SafeAreaView>
   );

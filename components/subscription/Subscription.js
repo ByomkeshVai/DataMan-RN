@@ -10,7 +10,7 @@ const Subscription = ({ item }) => {
   const category = item.category;
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
-    const apiUrl = "http://192.168.0.104:5000/all/package/";
+    const apiUrl = "http://192.168.0.105:5000/all/package/";
 
     // Fetch data using Axios and filter by category
     axios

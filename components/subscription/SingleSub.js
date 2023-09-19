@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import axios from "axios"; // Import Axios for making HTTP requests
 import styles from "./SingleSub.style";
 import { AuthContext } from "../providers/AuthProvider";
@@ -19,13 +19,26 @@ const SingleSub = ({ item, incrementPrice, decrementPrice }) => {
     };
 
     // Replace this with your API endpoint for purchase
-    const purchaseApiUrl = `http://192.168.0.104:5000/user/purchase/${userEmail}`;
+    const purchaseApiUrl = `http://192.168.0.105:5000/user/purchase/${userEmail}`;
 
     axios
       .post(purchaseApiUrl, userSelectedData)
       .then((response) => {
         // Handle the API response, if needed
-        console.log("Data saved successfully", response.data);
+        // console.log("Data saved successfully", response.data);
+        Alert.alert(
+          "Hey There!",
+          "Your Purchased is Succesfull",
+          [
+            {
+              text: "Close",
+              style: "cancel",
+            },
+          ],
+          {
+            cancelable: true,
+          }
+        );
       })
       .catch((error) => {
         // Handle any errors that occur during the API request

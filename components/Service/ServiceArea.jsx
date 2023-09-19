@@ -48,7 +48,7 @@ const ServiceArea = ({ item }) => {
 
   const handleCheckSubscription = (userID) => {
     axios
-      .get(`http://192.168.0.104:5000/check-subscription`, {
+      .get(`http://192.168.0.105:5000/check-subscription`, {
         params: { email, category, userID }, // Send userID as a parameter
       })
       .then((response) => {

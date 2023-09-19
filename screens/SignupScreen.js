@@ -50,7 +50,7 @@ const SignupScreen = ({ navigation }) => {
         role: "customer",
       };
       console.log(saveUser);
-      fetch(`http://192.168.0.104:5000/customer/${loggedUser.email}`, {
+      fetch(`http://192.168.0.105:5000/customer/${loggedUser.email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

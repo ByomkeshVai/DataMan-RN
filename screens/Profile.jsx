@@ -3,9 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./profile.style";
 import { AuthContext } from "../components/providers/AuthProvider";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Profile() {
   const { logOut } = useContext(AuthContext);
+  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <View style={styles.container}>
@@ -25,7 +27,10 @@ export default function Profile() {
           </View>
         </View>
         <View style={styles.menuContainer}>
-          <TouchableOpacity style={styles.menu}>
+          <TouchableOpacity
+            style={styles.menu}
+            onPressIn={() => navigation.navigate("AllPackage")}
+          >
             <Text style={styles.menuText}>Show Package</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.menu}>
