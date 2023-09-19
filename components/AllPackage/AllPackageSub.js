@@ -47,7 +47,7 @@ const AllPackageSub = ({ item }) => {
           <SinglePackage item={service} handleRemoveItem={handleRemoveItem} />
         </View>
       ) : (
-        <Text></Text>
+        <View></View>
       )}
     </View>
   );

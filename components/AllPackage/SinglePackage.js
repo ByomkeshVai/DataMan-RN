@@ -12,8 +12,6 @@ const SinglePackage = ({ item, handleRemoveItem }) => {
   const { user } = useContext(AuthContext);
   const userEmail = user.email;
 
-  useEffect(() => {}, [item]);
-
   return (
     <View>
       <EachPackage item={item} onRemove={handleRemoveItem} />
